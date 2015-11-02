@@ -65,6 +65,8 @@
                 this.model.set('quality', '720p');
             } else if (torrents['480p'] !== undefined) {
                 this.model.set('quality', '480p');
+            } else if (torrents['360p'] !== undefined) {
+                this.model.set('quality', '360p');
             } else if (torrents['HDRip'] !== undefined) {
                 this.model.set('quality', 'HDRip');
             }

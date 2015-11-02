@@ -29,6 +29,7 @@
             'click .showShows': 'showShows',
             'click .showAnime': 'showAnime',
             'click .showIndie': 'showIndie',
+            'click .showAdult': 'showAdult',
             'click #filterbar-favorites': 'showFavorites',
             'click #filterbar-watchlist': 'showWatchlist',
             'click #filterbar-torrent-collection': 'showTorrentCollection',
@@ -63,6 +64,10 @@
             case 'Indie':
             case 'indie':
                 $('.source.showIndie').addClass('active');
+                break;
+            case 'Adult':
+            case 'adult':
+                $('.source.showAdult').addClass('active');
                 break;
             case 'Favorites':
             case 'favorites':
@@ -155,6 +160,9 @@
                     break;
                 case 'Indie':
                     App.currentview = 'indie';
+                    break;
+                case 'Adult':
+                    App.currentview = 'adult';
                     break;
                 case 'Favorites':
                     App.currentview = 'Favorites';
@@ -368,6 +376,15 @@
             this.setactive('Indie');
         },
 
+        showAdult: function (e) {
+            e.preventDefault();
+            App.currentview = 'adult';
+            App.vent.trigger('about:close');
+            App.vent.trigger('torrentCollection:close');
+            App.vent.trigger('adult:list', []);
+            this.setactive('Adult');
+        },
+
         showMovies: function (e) {
             e.preventDefault();
 
@@ -442,7 +459,7 @@
             var that = this;
             $('.spinner').show();
 
-            App.Providers.get('Vodo').random()
+            App.Providers.get('Private').random()
                 .then(function (data) {
                     if (App.watchedMovies.indexOf(data.imdb_code) !== -1) {
                         that.randomMovie();

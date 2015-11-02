@@ -74,6 +74,7 @@
             App.vent.on('shows:list', _.bind(this.showShows, this));
             App.vent.on('anime:list', _.bind(this.showAnime, this));
             App.vent.on('indie:list', _.bind(this.showIndie, this));
+            App.vent.on('adult:list', _.bind(this.showAdult, this));
             App.vent.on('favorites:list', _.bind(this.showFavorites, this));
             App.vent.on('favorites:render', _.bind(this.renderFavorites, this));
             App.vent.on('watchlist:list', _.bind(this.showWatchlist, this));
@@ -204,6 +205,8 @@
                         that.showAnime();
                     } else if (Settings.startScreen === 'Indie' || (lastOpen && Settings.lastTab === 'Indie')) {
                         that.showIndie();
+                    } else if (Settings.startScreen === 'Adult' || (lastOpen && Settings.lastTab === 'Adult')) {
+                        that.showAdult();
                     } else {
                         that.showMovies();
                     }
@@ -262,6 +265,13 @@
             this.MovieDetail.destroy();
 
             this.Content.show(new App.View.IndieBrowser());
+        },
+
+        showAdult: function (e) {
+            this.Settings.destroy();
+            this.MovieDetail.destroy();
+
+            this.Content.show(new App.View.AdultBrowser());
         },
 
         updateShows: function (e) {

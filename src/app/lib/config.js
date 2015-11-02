@@ -185,6 +185,21 @@
         ],
         types_indie: [],
 
+        genres_adult: ['All',
+            'Anal',
+            'European',
+            'Mature',
+            'Milf'
+        ],
+
+        sorters_adult: [
+            'popularity',
+            'date added',
+            'year',
+            'rating'
+        ],
+        types_adult: [],
+ 
         cache: {
             name: 'cachedb',
             version: '1.7',
@@ -200,7 +215,7 @@
         },
 
         providers: {
-            movie: ['Vodo', 'Archive'],
+            movie: ['Private'],
             subtitle: 'YSubs',
             metadata: 'Trakttv',
             tvst: 'TVShowTime',
